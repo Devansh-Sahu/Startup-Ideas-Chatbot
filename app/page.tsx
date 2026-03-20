@@ -31,7 +31,7 @@ export default function Home() {
       {/* Animated background elements */}
       <div className="fixed inset-0 pointer-events-none">
         <motion.div
-          className="absolute top-20 left-10 w-96 h-96 bg-amber-700/15 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"
           animate={{
             y: [0, -30, 0],
             opacity: [0.2, 0.4, 0.2],
@@ -39,7 +39,7 @@ export default function Home() {
           transition={{ duration: 8, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-700/15 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
           animate={{
             y: [0, 30, 0],
             opacity: [0.2, 0.4, 0.2],
@@ -54,22 +54,22 @@ export default function Home() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-700/20 border border-amber-600/40 backdrop-blur-xl"
+          className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-blur-xl"
         >
-          <Sparkles className="w-4 h-4 text-amber-400" />
-          <span className="text-amber-200 text-sm font-medium">AI-Powered Startup Mentor</span>
+          <Sparkles className="w-4 h-4 text-indigo-400" />
+          <span className="text-indigo-200 text-sm font-medium">AI-Powered Startup Mentor</span>
         </motion.div>
 
         {/* Main Heading */}
-        <div className="mb-8 text-center">
+        <div className="mb-8 text-center px-2">
           <HeroText delay={0.1}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 tracking-tight">
               Turn Your <AnimatedGradient>Ideas Into Reality</AnimatedGradient>
             </h1>
           </HeroText>
 
           <HeroText delay={0.2}>
-            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
               Get instant AI feedback on your startup ideas. Validate, refine, and launch with confidence.
             </p>
           </HeroText>
