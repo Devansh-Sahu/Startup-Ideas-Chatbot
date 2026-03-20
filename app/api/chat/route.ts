@@ -1,4 +1,6 @@
+// Trigger Next.js Turbopack reload
 import { streamText } from 'ai'
+import { groq } from '@ai-sdk/groq'
 
 const systemPrompt = `You are an expert startup mentor and business analyst. Your role is to provide comprehensive, constructive feedback on startup ideas.
 
@@ -45,12 +47,11 @@ export async function POST(request: Request) {
       },
     ]
 
-    console.log('[v0] Calling AI Gateway with model: openai/gpt-4-turbo')
+    console.log('[v0] Calling Groq API')
 
-    // Use a reliable model through the Vercel AI Gateway (no extra config needed)
-    // gpt-4-turbo is available by default in the gateway
+    // Using the Groq provider (you will need a GROQ_API_KEY in your .env.local file)
     const result = streamText({
-      model: 'openai/gpt-4-turbo',
+      model: groq('llama-3.3-70b-versatile'),
       system: systemPrompt,
       messages: conversationHistory,
       maxTokens: 1500,
