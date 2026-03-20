@@ -12,12 +12,12 @@ export function IdeaChip({ text, onClick, delay = 0 }: IdeaChipProps) {
   return (
     <motion.button
       onClick={onClick}
-      className="px-6 py-2 rounded-full bg-gradient-to-r from-slate-800/50 to-slate-900/50 border border-amber-600/40 text-slate-100 text-sm font-medium hover:border-amber-500/70 transition-all duration-300 cursor-pointer backdrop-blur-xl relative overflow-hidden group"
+      className="px-6 py-2 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300 text-sm font-medium hover:text-white hover:border-zinc-500/70 transition-all duration-300 cursor-pointer backdrop-blur-xl relative overflow-hidden group"
       initial={{ opacity: 0, scale: 0.8, y: 10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       whileHover={{
-        scale: 1.08,
-        boxShadow: '0 0 30px rgba(192, 160, 128, 0.5)',
+        scale: 1.05,
+        boxShadow: '0 0 20px rgba(255, 255, 255, 0.05)',
       }}
       whileTap={{ scale: 0.95 }}
       transition={{
@@ -27,7 +27,7 @@ export function IdeaChip({ text, onClick, delay = 0 }: IdeaChipProps) {
       }}
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-amber-600/0 via-amber-600/20 to-amber-600/0 opacity-0 group-hover:opacity-100"
+        className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100"
         animate={{
           x: ['-100%', '100%'],
         }}
@@ -37,7 +37,7 @@ export function IdeaChip({ text, onClick, delay = 0 }: IdeaChipProps) {
           ease: 'easeInOut',
         }}
       />
-      <span className="relative">{text}</span>
+      <span className="relative z-10">{text}</span>
     </motion.button>
   )
 }

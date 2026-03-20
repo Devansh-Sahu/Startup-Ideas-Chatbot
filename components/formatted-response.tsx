@@ -41,11 +41,11 @@ export function FormattedResponse({ content }: FormattedResponseProps) {
         return (
           <motion.div
             key={idx}
-            className="p-4 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 backdrop-blur-sm hover:shadow-lg hover:shadow-indigo-500/20"
+            className="p-4 sm:p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 hover:bg-zinc-800/40 hover:border-zinc-700/50 transition-all duration-300"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.08, duration: 0.4 }}
-            whileHover={{ scale: 1.02, y: -2 }}
+            whileHover={{ y: -2 }}
           >
             {title && (
               <motion.div 
@@ -55,16 +55,16 @@ export function FormattedResponse({ content }: FormattedResponseProps) {
                 transition={{ delay: idx * 0.08 + 0.1 }}
               >
                 <motion.span 
-                  className="text-indigo-400"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ delay: idx * 0.08 + 0.2, duration: 2, repeat: Infinity }}
+                  className="text-zinc-300"
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ delay: idx * 0.08 + 0.2, duration: 3, repeat: Infinity }}
                 >
                   {icon}
                 </motion.span>
-                <h3 className="font-semibold text-indigo-300">{title}</h3>
+                <h3 className="font-semibold text-zinc-100">{title}</h3>
               </motion.div>
             )}
-            <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">{body}</p>
+            <p className="text-zinc-300 text-[15px] sm:text-base leading-relaxed whitespace-pre-wrap">{body}</p>
           </motion.div>
         )
       })}

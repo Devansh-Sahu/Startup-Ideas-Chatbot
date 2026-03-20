@@ -19,8 +19,8 @@ export function AnimatedButton({
   size = 'md',
 }: AnimatedButtonProps) {
   const variantStyles = {
-    primary: 'bg-gradient-to-r from-amber-700 via-amber-600 to-yellow-600 text-slate-900 hover:shadow-2xl hover:shadow-amber-600/60 relative overflow-hidden border border-amber-500/40 backdrop-blur-xl',
-    secondary: 'bg-slate-800/40 text-slate-100 border border-slate-700/60 hover:bg-slate-700/50 backdrop-blur-xl',
+    primary: 'bg-zinc-100 text-zinc-950 hover:bg-white hover:shadow-xl hover:shadow-white/10 relative overflow-hidden border border-zinc-200/40 backdrop-blur-xl',
+    secondary: 'bg-zinc-800/40 text-zinc-100 border border-zinc-700/60 hover:bg-zinc-700/50 backdrop-blur-xl',
   }
 
   const sizeStyles = {

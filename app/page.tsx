@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black overflow-hidden">
+    <main className="min-h-screen bg-[#09090b] overflow-hidden">
       {/* Animated background elements */}
       <div className="fixed inset-0 pointer-events-none">
         <motion.div
@@ -77,7 +77,7 @@ export default function Home() {
 
         {/* Features Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 w-full"
+          className="hidden md:grid md:grid-cols-3 gap-6 mb-12 w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -89,13 +89,13 @@ export default function Home() {
           ].map((feature, i) => (
             <motion.div
               key={i}
-              className="p-6 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm hover:border-indigo-500/50 transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -10 }}
+              className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm hover:bg-zinc-800/50 transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -5 }}
               transition={{ delay: 0.3 + i * 0.1 }}
             >
               <feature.icon className="w-8 h-8 text-indigo-400 mb-3" />
-              <h3 className="font-semibold text-lg mb-2">{feature.label}</h3>
-              <p className="text-sm text-slate-400">{feature.desc}</p>
+              <h3 className="font-semibold text-base sm:text-lg mb-2 text-zinc-100">{feature.label}</h3>
+              <p className="text-sm text-zinc-400">{feature.desc}</p>
             </motion.div>
           ))}
         </motion.div>

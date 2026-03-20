@@ -31,22 +31,30 @@ export function MessageBubble({ content, isUser, delay = 0 }: MessageBubbleProps
         delay,
         ease: 'easeOut',
       }}
-      className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
+      className="w-full flex"
     >
       <div
-        className={`max-w-md px-4 py-3 rounded-lg backdrop-blur-xl transition-all duration-300 ${
+        className={`w-full max-w-4xl mx-auto px-4 sm:px-6 py-3 transition-all duration-300 ${
           isUser
-            ? 'bg-gradient-to-br from-amber-700/30 to-yellow-700/20 text-white rounded-br-none border border-amber-600/40 shadow-lg shadow-amber-600/20 hover:shadow-amber-600/40'
-            : 'bg-slate-900/40 text-slate-100 rounded-bl-none border border-slate-700/60 shadow-lg shadow-black/40 hover:border-slate-600/60'
+            ? 'flex justify-end'
+            : 'flex justify-start'
         }`}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: delay + 0.2, duration: 0.4 }}
+        <div 
+          className={`px-5 py-3.5 text-[15px] sm:text-base leading-relaxed ${
+            isUser
+              ? 'bg-zinc-800 text-zinc-100 rounded-3xl rounded-br-sm max-w-[85%] sm:max-w-[75%]'
+              : 'bg-transparent text-zinc-200 min-w-full'
+          }`}
         >
-          {content}
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: delay + 0.2, duration: 0.4 }}
+          >
+            {content}
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   )

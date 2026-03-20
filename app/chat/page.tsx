@@ -143,29 +143,29 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black flex flex-col">
+    <div className="h-[100dvh] bg-[#09090b] flex flex-col overflow-hidden">
       <AnimatedBackground />
 
       {/* Header */}
-      <div className="relative z-20 border-b border-slate-800/50 backdrop-blur-xl bg-gradient-to-r from-slate-900/50 to-slate-950/50 px-4 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
+      <div className="relative z-20 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-xl">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <motion.button
               onClick={() => router.push('/')}
-              className="p-2 rounded-lg hover:bg-slate-800 transition-colors"
+              className="p-2 -ml-2 rounded-lg hover:bg-zinc-800 text-zinc-400 hover:text-zinc-100 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ArrowLeft className="w-5 h-5 text-slate-400" />
+              <ArrowLeft className="w-5 h-5" />
             </motion.button>
             <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-indigo-400" />
-              <h1 className="text-lg font-semibold text-slate-100">Startup Idea Analyzer</h1>
+              <Sparkles className="w-4 h-4 text-zinc-400" />
+              <h1 className="text-base sm:text-lg font-medium text-zinc-100">Startup Idea Analyzer</h1>
             </div>
           </div>
           {idea && (
             <motion.div
-              className="px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/50 text-sm text-indigo-300"
+              className="hidden sm:block px-3 py-1 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-xs font-medium text-zinc-300 max-w-[200px] truncate"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
@@ -176,24 +176,24 @@ export default function ChatPage() {
       </div>
 
       {/* Messages Container */}
-      <div className="relative z-10 flex-1 overflow-y-auto px-4 py-8 max-w-4xl mx-auto w-full">
+      <div className="relative z-10 flex-1 overflow-y-auto w-full flex flex-col">
         <AnimatePresence>
           {messages.length === 0 && !isLoading && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="flex flex-col items-center justify-center h-full text-center py-20"
+              className="m-auto flex flex-col items-center justify-center text-center py-10 px-4 sm:px-6 w-full max-w-4xl"
             >
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
                 className="mb-6"
               >
-                <Sparkles className="w-16 h-16 text-indigo-400 mx-auto" />
+                <Sparkles className="w-12 h-12 text-zinc-500 mx-auto" />
               </motion.div>
-              <h2 className="text-2xl font-bold text-slate-100 mb-2">Start Your Startup Journey</h2>
-              <p className="text-slate-400 max-w-sm">
+              <h2 className="text-xl sm:text-2xl font-semibold text-zinc-100 mb-2">Start Your Startup Journey</h2>
+              <p className="text-sm text-zinc-400 max-w-sm">
                 Share your startup idea and I'll provide comprehensive feedback on market viability, target users, revenue models, and more.
               </p>
             </motion.div>
@@ -237,34 +237,39 @@ export default function ChatPage() {
       </div>
 
       {/* Input Area */}
-      <div className="relative z-20 border-t border-slate-800/50 backdrop-blur-xl bg-gradient-to-t from-slate-950/80 to-blue-950/50 px-4 py-6">
-        <div className="max-w-4xl mx-auto flex gap-3">
-          <input
-            ref={inputRef}
-            type="text"
+      <div className="relative z-20 bg-[#09090b] pb-safe pb-4 pt-2 sm:pb-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="w-full flex gap-2 sm:gap-3 items-end bg-zinc-900 border border-zinc-800 focus-within:border-zinc-700 focus-within:ring-1 focus-within:ring-zinc-700 rounded-[28px] p-1 shadow-sm transition-all relative">
+          <textarea
+            ref={inputRef as any}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => {
+            onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault()
                 sendMessage()
               }
             }}
-            placeholder="Ask a follow-up question about your idea..."
-            className="flex-1 bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition-all duration-200"
+            placeholder="Ask a follow-up question..."
+            className="flex-1 bg-transparent max-h-32 min-h-[52px] resize-none px-4 py-3.5 text-[16px] sm:text-[15px] text-zinc-100 placeholder-zinc-500 focus:outline-none"
             disabled={isLoading}
+            rows={1}
           />
           <motion.button
             onClick={() => sendMessage()}
             disabled={isLoading || !input.trim()}
-            className="p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-teal-500 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/50"
+            className="p-2 sm:p-2.5 mb-1.5 mr-1.5 rounded-full bg-white text-zinc-950 disabled:opacity-30 disabled:bg-zinc-800 disabled:text-zinc-500 transition-all duration-200 flex-shrink-0"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Send className="w-5 h-5" />
+            <Send className="w-5 h-5 ml-0.5" />
           </motion.button>
         </div>
+        <div className="max-w-4xl mx-auto text-center mt-3">
+          <p className="text-[11px] text-zinc-500">AI can make mistakes. Consider verifying important information.</p>
+        </div>
       </div>
+    </div>
     </div>
   )
 }
