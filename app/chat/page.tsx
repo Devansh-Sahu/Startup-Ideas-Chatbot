@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageBubble } from '@/components/message-bubble'
@@ -17,7 +17,7 @@ interface Message {
   timestamp: Date
 }
 
-export default function ChatPage() {
+function ChatContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [messages, setMessages] = useState<Message[]>([])
@@ -271,5 +271,19 @@ export default function ChatPage() {
       </div>
     </div>
     </div>
+  )
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="h-[100dvh] bg-[#09090b] flex items-center justify-center">
+          <LoadingDots />
+        </div>
+      }
+    >
+      <ChatContent />
+    </Suspense>
   )
 }
